@@ -5,7 +5,7 @@
  */
 #include "Config.h"
 #include <Arduino.h>
-#include <PinButton.h>
+#include "PinButton.h"
 #include "HueClient.h"
 #include "HueGroup.h"
 #include "Led.h"
@@ -38,11 +38,12 @@ void setup()
     wifiMulti.addAP(WIFI_SSID, WIFI_PASSWORD);
     if ((wifiMulti.run() != WL_CONNECTED)) {
         USE_SERIAL.println("Unable to connect");
-    }
+    }else{USE_SERIAL.println("Connected");}
 }
 
 void loop()
 {
+  //USE_SERIAL.println(analogRead(BUTTON_PIN));
     button.update();
 
     if (button.isClick()) {
